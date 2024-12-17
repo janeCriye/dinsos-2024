@@ -49,7 +49,7 @@ halamanDetail = "kabar-baca"
                             {% set header = post.gambar_header.path | default(headerDef) %}
                             <div class="swiper-slide vh-100">
                                 <img alt="Tentang Kami" 
-                                    src="{{ header | resize(360, 250, { mode:'crop' }) }}" 
+                                    src="{{ header }}" 
                                     class="img-fluid w-100 h-100 object-fit-cover">
                             </div>
                         {% endfor %}
