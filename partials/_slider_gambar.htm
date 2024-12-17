@@ -48,23 +48,27 @@ halamanDetail = "kabar-baca"
                             {% set headerDef = 'assets/images/tentang_kami.jpeg'|theme %}
                             {% set header = post.gambar_header.path | default(headerDef) %}
                             <div class="swiper-slide vh-100">
-                                <img alt="Tentang Kami" 
-                                    src="{{ header }}" 
-                                    class="img-fluid w-100 h-100 object-fit-cover">
+                                <div class="cover-background position-absolute top-0 start-0 w-100 h-100" style="background-image:url('{{ header }}');" data-swiper-parallax="1000">
+                                    <div class="opacity-light bg-gradient-black-green"></div>
+                                    <div class="container h-100" data-swiper-parallax="-300">
+                                        <div class="row align-items-center justify-content-center h-100 text-center">
+                                            <div class="col-xl-7 col-lg-9 col-md-10 position-relative text-white">
+                                                <div data-anime='{ "el": "childs", "translateY": [80, 0], "opacity": [0,1], "duration": 600, "delay": 1000, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                                                    <h1 class="alt-font text-white fw-600 mb-4">{{ post.judul }}</h1>
+                                                    <a href="{{ post.url }}" target="_blank" class="btn btn-large btn-base-color btn-hover-animation-switch btn-round-edge btn-box-shadow me-20px xs-m-10px">
+                                                        <span> 
+                                                            <span class="btn-text">Lebih Lanjut</span>
+                                                            <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                                            <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>   
+                                </div>
                             </div>
                         {% endfor %}
-                        {# <!-- Slide 1 -->
-                        <div class="swiper-slide vh-100">
-                            <img alt="Tentang Kami" src="{{ 'assets/images/tentang_kami.jpeg' | theme }}" class="img-fluid w-100 h-100 object-fit-cover">
-                        </div>
-                        <!-- Slide 2 -->
-                        <div class="swiper-slide vh-100">
-                            <img alt="Testimoni" src="{{ 'assets/images/testimonials-quote.png' | theme }}" class="img-fluid w-100 h-100 object-fit-cover">
-                        </div>
-                        <!-- Slide 3 -->
-                        <div class="swiper-slide vh-100">
-                            <img alt="Maintenance" src="{{ 'assets/images/maintenance-bg.jpg' | theme }}" class="img-fluid w-100 h-100 object-fit-cover">
-                        </div> #}
                     </div>
                     <!-- Navigasi Slider -->
                     <div class="swiper-button-previous-nav swiper-button-prev md-left-0px">
