@@ -42,7 +42,7 @@ sebagai contoh saat memanggil partial 'site/_load_gambar_lainnya' gambar_lainnya
                                 <div class="atropos-rotate" style="transition-duration: 300ms; transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg);">
                                     <div class="atropos-inner" data-atropos-offset="3" style="transition-duration: 300ms; transform: translate3d(0px, 0px, 0px);"> 
                                         <div class="gallery-box">
-                                            <a href="{{ image.path }}" data-group="lightbox-group-gallery-item-2" title="Lightbox gallery image title">
+                                            <a href="{{ image.path }}" data-group="lightbox-group-gallery-item-2" title="{{ image.description }}">
                                                 <div class="position-relative gallery-image bg-slate-blue">
                                                     <img src="{{ image.getThumb(295, 274, 'fit') }}" alt="" data-no-retina="">
                                                     <div class="d-flex align-items-center justify-content-center position-absolute top-0px left-0px w-100 h-100 gallery-hover move-bottom-top">

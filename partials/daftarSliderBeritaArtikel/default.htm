@@ -27,22 +27,23 @@
                                 <a href="{{ post.url }}"
                                     class="text-uppercase d-inline-block fs-18 fw-700 text-dark-gray mb-5px">{{
                                     post.judul }}</a>
-                                <p>
+                                {{ str_words(post.ringkasan_paksa, 10) }}
+                                {# <p>
                                     {% if post.ringkasan %}
                                     {{ post.ringkasan | slice(0, 80) }}{% if post.ringkasan|length > 80 %}...{% endif %}
                                     {% else %}
                                     Tidak ada ringkasan
                                     {% endif %}
-                                </p>
+                                </p> #}
                                 <div
                                     class="author mt-3 d-flex justify-content-center align-items-center position-relative overflow-hidden fs-6 text-uppercase">
                                     <div class="me-auto">
                                         <span class="blog-date d-inline-block fw-600 text-dark-gray"><i
                                                 class="bi bi-calendar"></i> {{ post.tgl_tampil | date('d F Y') }}</span>
-                                        <div class="d-inline-block author-name fw-600 text-dark-gray">
+                                        {# <div class="d-inline-block author-name fw-600 text-dark-gray">
                                             <span class="text-dark-gray"><i class="bi bi-calendar2-check"></i> {{
                                                 post.updated_at | date('d F Y') }}</span>
-                                        </div>
+                                        </div> #}
                                     </div>
                                 </div>
                             </div>
