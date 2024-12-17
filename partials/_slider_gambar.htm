@@ -1,3 +1,9 @@
+[tulisanList daftarBeritaSlider]
+paramHalaman = "1"
+jumlahItemPerHalaman = 6
+filterKategori = "berita|artikel"
+halamanDetail = "kabar-baca"
+==
 <section class="cover-background bg-dark-gray" style="background-image: url('{{ 'assets/images/crafto-landing-page-hero-section-bg.jpg' | theme }}');">
     <div class="container-fluid background-no-repeat background-position-top">
         <!-- Bagian Atas -->
@@ -37,7 +43,17 @@
                     "navigation": { "nextEl": ".swiper-button-next-nav", "prevEl": ".swiper-button-previous-nav" }
                 }'>
                     <div class="swiper-wrapper">
-                        <!-- Slide 1 -->
+                        {% for post in posts %}
+
+                            {% set headerDef = 'assets/images/tentang_kami.jpeg'|theme %}
+                            {% set header = post.gambar_header.path | default(headerDef) %}
+                            <div class="swiper-slide vh-100">
+                                <img alt="Tentang Kami" 
+                                    src="{{ header | resize(360, 250, { mode:'crop' }) }}" 
+                                    class="img-fluid w-100 h-100 object-fit-cover">
+                            </div>
+                        {% endfor %}
+                        {# <!-- Slide 1 -->
                         <div class="swiper-slide vh-100">
                             <img alt="Tentang Kami" src="{{ 'assets/images/tentang_kami.jpeg' | theme }}" class="img-fluid w-100 h-100 object-fit-cover">
                         </div>
@@ -48,7 +64,7 @@
                         <!-- Slide 3 -->
                         <div class="swiper-slide vh-100">
                             <img alt="Maintenance" src="{{ 'assets/images/maintenance-bg.jpg' | theme }}" class="img-fluid w-100 h-100 object-fit-cover">
-                        </div>
+                        </div> #}
                     </div>
                     <!-- Navigasi Slider -->
                     <div class="swiper-button-previous-nav swiper-button-prev md-left-0px">

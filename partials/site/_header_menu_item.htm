@@ -1,28 +1,71 @@
 {% if items %}
-<ul class="navbar-nav">
-    {% for item in items %}
-        <li class="nav-item {% if item.items %}dropdown dropdown-with-icon-style02{% endif %} 
-            {% if item.url == request.url or (item.url == '/' and request.url == '') %}active{% endif %}">
-            <a href="{{ item.url }}" class="nav-link d-flex align-items-center justify-content-between 
-                {% if item.url == request.url or (item.url == '/' and request.url == '') %}active{% endif %}">
-                {{ item.title }}
-            </a>
-            {% if item.items %}
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink{{ loop.index }}">
-                    {% for subItem in item.items %}
-                        <li class="{% if subItem.url == request.url or (subItem.url == '/' and request.url == '') %}active{% endif %}">
-                            <a href="{{ subItem.url }}" class="d-flex align-items-center 
-                                {% if subItem.url == request.url or (subItem.url == '/' and request.url == '') %}active{% endif %}">
-                                <i class="bi bi-chevron-right me-2"></i> <!-- Ikon sub-item dengan margin kanan -->
-                                {{ subItem.title }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
+    <ul class="navbar-nav">
+        {% for item in items %}
+            <li
+                class="nav-item {% if item.items %}dropdown dropdown-with-icon-style02{% endif %} 
+            {% if item.url == request.url or (item.url == '/' and request.url == '') %}active{% endif %}"
+            >
+                <a
+                    href="{{ item.url }}"
+                    class="nav-link d-flex align-items-center justify-content-between 
+                {% if item.url == request.url or (item.url == '/' and request.url == '') %}active{% endif %}"
+                >
+                    {{ item.title }}
+                </a>
+                {% if item.items %}
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink{{ loop.index }}">
+                        {% for subItem in item.items %}
+                            <li
+                                class="{% if subItem.url == request.url or (subItem.url == '/' and request.url == '') %}active{% endif %}"
+                            >
+                                <a
+                                    href="{{ subItem.url }}"
+                                    class="d-flex align-items-center 
+                                {% if subItem.url == request.url or (subItem.url == '/' and request.url == '') %}active{% endif %}"
+                                >
+                                    <i class="bi bi-chevron-right me-2"></i>
+                                    <!-- Ikon sub-item dengan margin kanan -->
+                                    {{ subItem.title }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+        <li class="nav-item">
+            <a href="#modal-search" class="nav-link modal-popup"><i class="bi bi-search"></i></a>
         </li>
-    {% endfor %}
-</ul>
+    </ul>
 {% else %}
-<p>Tidak ada menu ditemukan.</p>
+    <p>Tidak ada menu ditemukan.</p>
 {% endif %}
+
+<div
+    id="modal-search"
+    class="white-popup-block mfp-hide col-xl-3 col-lg-6 col-md-7 col-11 mx-auto bg-white text-center modal-popup-main p-50px"
+>
+    <span class="text-dark-gray fw-600 fs-24 mb-10px d-block">Pencarian</span>
+    <form action="{{ 'search' | page }}" class="d-flex align-items-center">
+        <div class="input-group input-group-lg">
+            <input
+                name="q"
+                type="text"
+                class="form-control btn-transparent-white-light text-transform-none border-1"
+                placeholder="Cari..."
+                required
+                aria-label="Search"
+            />
+            <button
+                type="submit"
+                title="Search"
+                class="btn btn-secondary text-transform-none border-1"
+                name="submit"
+                value="Submit"
+            >
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </form>
+    {# <a class="btn btn-small btn-rounded btn-dark-gray popup-modal-dismiss mt-10px" href="#">Dismiss</a> #}
+</div>
