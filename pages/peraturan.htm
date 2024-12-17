@@ -1,0 +1,89 @@
+url = "/peraturan/:page?"
+layout = "default"
+title = "Peraturan"
+is_hidden = 0
+meta_title = "Daftar Peraturan"
+child_of = "home"
+hide_crumb = 0
+remove_crumb_trail = 0
+crumb_disabled = 0
+
+[tulisanList daftarPeraturan]
+paramHalaman = "{{ :page }}"
+jumlahItemPerHalaman = 10
+filterKategori = "peraturan|peraturan-presiden|peraturan-pemerintah|peraturan-kementerian|peraturan-provinsi|undang-undang"
+halamanDetail = "peraturan_detail"
+tampilPagination = "true"
+
+[kategori]
+slug = "{{ :slug }}"
+tampilkanYangKosong = 1
+filterKategori = "peraturan|peraturan-presiden|peraturan-pemerintah|peraturan-kementerian|peraturan-provinsi|undang-undang"
+halamanKategori = "peraturan_k"
+==
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="row blog_thumbs">
+                    {% for post in posts %}
+                    {% set headerDef = 'assets/images/background-law.jpg'|theme %}
+                    {% set header = post.gambar_header.path | default(headerDef) %}
+                    <div class="col-md-12 mb-md-4 mb-2 pb-2">
+                        <div class="blog_post">
+                            <div class="blog_img">
+                                <a href="{{ post.url }}">
+                                    <img src="{{ header |resize(350,198, {mode:'exact'})}}">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="blog_content">
+                            <div class="blog_text">
+                                <h6 class="blog_title"><a href="{{ post.url }}">{{ post.judul }}</a></h6>
+                                <div class="list_none blog_meta">
+                                    <span><i class="ti-calendar"></i> {{ post.tgl_tampil | date('d-m-Y') }}</span> /
+                                    <span><i class="fa fa-calendar-check"></i> {{ post.updated_at | date('d-m-Y') }}</span>
+                                </div>
+                                <p>{{ post.ringkasan_paksa }}</p>
+                                <a href="{{ post.url }}" class="text-capitalize">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <p class="text-center text-danger">Maaf, belum ada data untuk saat ini.</p>
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    <div class="col-lg mt-4">
+                        {% partial '_pagination' records=posts %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 order-lg-first mt-lg-0 mt-4 pt-3 pt-lg-0">
+                <div class="sidebar">
+                    <div class="widget">
+                        <div class="newsletter_form">
+                            <form>
+                                <div class="outline_input-black">
+                                    <input required="" placeholder="Cari..." type="text">
+                                </div>
+                                <button type="submit" title="Subscribe" class="btn btn-submit border-0" name="submit" value="Submit">
+                                    <span class="ti-search"></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget_title">Kategori</h5>
+                        <ul class="list_none widget_categories border_bottom_dash">
+                            {% for kat in kategori %}
+                            <li><a href="{{ kat.url }}"><span class="categories_name">{{ kat.nama }}</span><span class="categories_num">({{ kat.jumlah_tulisan }})</span></a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% partial 'site/_berita_terbaru_widget' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

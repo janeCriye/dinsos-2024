@@ -1,0 +1,55 @@
+url = "/agenda/kalender/:year?/:month?"
+layout = "default"
+title = "Agenda"
+is_hidden = 0
+meta_title = "Kalender Kegiatan"
+child_of = "home"
+hide_crumb = 0
+remove_crumb_trail = 0
+crumb_disabled = 0
+
+[calendargub]
+tmonth = "{{ :month }}"
+tyear = "{{ :year }}"
+miniType = 0
+linkRange = "agenda/pada"
+==
+{# {% partial 'site/_page_title' %} #}
+<section class="pt-0 cover-background ipad-top-space-margin sm-pb-0" style="background-image: url('{{ 'assets/images/crafto-landing-page-hero-section-bg.jpg' | theme }}');">
+            <div class="shape-image-animation bottom-0 p-0 w-100 d-none d-md-block"> 
+                <svg xmlns="http://www.w3.org/2000/svg" widht="3000" height="400" viewBox="0 180 2500 200" fill="#ffffff"> 
+                <path class="st1" d="M 0 250 C 1200 400 1200 50 3000 250 L 3000 550 L 0 550 L 0 250">
+                <animate
+                    attributeName="d"
+                    dur="5s"
+                    values="M 0 250 C 1200 400 1200 50 3000 250 L 3000 550 L 0 550 L 0 250;
+                            M 0 250 C 400 50 400 400 3000 250 L 3000 550 L 0 550 L 0 250;
+                            M 0 250 C 1200 400 1200 50 3000 250 L 3000 550 L 0 550 L 0 250"
+                    repeatCount="indefinite"
+                    />
+                </path>
+                </svg>
+            </div> 
+            <div class="container">
+                <div class="row align-items-center justify-content-center h-500px sm-h-300px">
+                    <div class="col-12 col-lg-6 col-md-10 position-relative text-center page-title-extra-large d-flex flex-wrap flex-column align-items-center justify-content-center" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                        <span class="ps-25px pe-25px pt-5px pb-5px mb-15px text-uppercase text-white fs-12 ls-1px fw-600 border-radius-100px bg-gradient-dark-gray-transparent d-flex"><i class="bi bi-megaphone text-white icon-small me-10px"></i>Kalender Kegiatan</span>
+                        <h1 class="mb-20px text-white fw-600 ls-minus-1px">Daftar kegiatan</h1>
+                    </div> 
+                </div>
+            </div>
+        </section>
+<section class="bg-gradient-top-very-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                {% component 'calendargub' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                {% partial '_daftar_agenda' %}
+            </div>
+        </div>
+    </div>
+</section>

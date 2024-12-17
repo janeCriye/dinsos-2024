@@ -1,0 +1,13 @@
+[daftarKegiatanPadaBulan daftarKegiatanPadaBulan]
+month = "{{ :month }}"
+year = "{{ :year }}"
+postsPerPage = 30
+detailPage = "jadwal/detail"
+tidakAdaJadwal = "Tidak ada jadwal dimasukkan"
+==  
+{#
+    karena ada keterbatasan pada multiple eventgubernur plugin, akibat tidak dibatasinya variable yang masuk 
+    dan diload pada sebuah halaman yang meload, maka dibuatkan ini pada bagian partial supaya bisa terload 
+    dengan sempurna pada halaman kalender
+#}
+{% component 'daftarKegiatanPadaBulan' %}

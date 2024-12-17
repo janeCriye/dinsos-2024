@@ -1,0 +1,33 @@
+url = "/statistik/permohonan-data-ppid"
+layout = "default3"
+title = "Grafis PPID"
+child_of = "home"
+hide_crumb = 0
+remove_crumb_trail = 0
+crumb_disabled = 0
+
+[chartPPID]
+==
+<?php
+function onStart()
+{
+    $this->addJs('assets/chartjs/chart.min.js');
+    $this->addJs('assets/chartjs/chartjs-plugin-datalabels@2.0.0.min.js');
+    $this->addJs('assets/chartjs/utils.js');
+}
+?>
+==
+<div class="col-lg-9">
+                {% component 'chartPPID' %}
+            </div>
+            <div class="col-lg-3 order-lg-first mt-lg-0 pt-1 pt-lg-0">
+                <div class="sidebar">
+                    <div class="widget">
+                        <div class="newsletter_form">
+                            {% partial '_pencarian_form' %}
+                        </div>
+                    </div>
+                    {% partial 'site/_kabar_berita_widget' %}
+                    {% partial 'site/_pengumuman_widget' %}
+                </div>
+            </div>

@@ -1,0 +1,36 @@
+<div class="col-12 mt-5 mb-5 d-flex justify-content-center" data-anime='{ "el": "childs", "translateY": [0, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+    <div class="text-center mb-3">
+        <span>Menampilkan {{ records.firstItem }} - {{ records.lastItem }} dari {{ records.total }} | Halaman {{ records.currentPage }} dari {{ records.lastPage }}</span>
+    </div>
+    <ul class="pagination pagination-style-01 fs-13 fw-500 mb-0 mt-3">
+        {% if records.currentPage > 1 %}
+        <li class="page-item">
+            <a class="page-link" href="{{ thispage.baseFileName|page({ (paramHalaman): (records.currentPage - 1) }) }}{{ reqQueryString|length > 2 ? "?" ~ reqQueryString : "" }}">
+                <i class="feather icon-feather-arrow-left fs-18 d-xs-none"></i>
+            </a>
+        </li>
+        {% endif %}
+
+        {% for page in pageSet %}
+        {% if page == '...' %}
+        <li class="page-item">
+            <a class="page-link disabled" href="javascript:void(0)">...</a>
+        </li>
+        {% else %}
+        <li class="page-item {{ page == records.currentPage ? 'active' }}">
+            <a class="page-link" href="{{ thispage.baseFileName|page({ (paramHalaman): page }) }}{{ reqQueryString|length > 2 ? "?" ~ reqQueryString : "" }}">
+                {{ page < 10 ? '0' ~ page : page }}
+            </a>
+        </li>
+        {% endif %}
+        {% endfor %}
+
+        {% if records.lastPage > records.currentPage %}
+        <li class="page-item">
+            <a class="page-link" href="{{ thispage.baseFileName|page({ (paramHalaman): (records.currentPage + 1) }) }}{{ reqQueryString|length > 2 ? "?" ~ reqQueryString : "" }}">
+                <i class="feather icon-feather-arrow-right fs-18 d-xs-none"></i>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</div>

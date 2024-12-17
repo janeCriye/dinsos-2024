@@ -1,0 +1,63 @@
+url = "/tanya-jawab"
+layout = "default"
+title = "Tanya Jawab"
+is_hidden = 0
+child_of = "home"
+hide_crumb = 0
+remove_crumb_trail = 0
+crumb_disabled = 0
+
+[FaqAsk]
+
+[FaqAll]
+limit = 25
+sortOrder = "desc"
+==
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card">
+                    <h5 class="card-header">Form Pertanyaan</h5>
+                    <div class="card-body card-info">
+                        <p class="mute">Hanya pertanyaan yang memenuhi syarat saja yang ditampilkan dan dijawab.</p>
+                        {{ form_open({ request: 'onPost' }) }}
+                        {% flash %}
+                        <div role="alert" class="alert alert-{{ type }}">{{ message }}</div>
+                        {% endflash %}
+                        <textarea class="form-control" name="question" rows="3" placeholder="Pertanyaan anda"></textarea>
+                        <input class="form-control" type="text" placeholder="Email" name="email">
+                        <button class="btn btn-info btn-sm">Kirim</button>
+                        {{ form_close() }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                <div class="heading_s3">
+                    Daftar  Pertanyaan dan Jawaban
+                </div>
+                <div id="accordion" class="accordion">
+                    {% set faqs = FaqAll.faqs %}
+                    {% for faq in faqs %}
+                    <div class="card">
+                        <div class="card-header" id="heading{{ loop.index }}">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#collapse{{ loop.index }}" aria-expanded="true" 
+                                    aria-controls="collapseOne">{{ faq.question }}
+                                </a> 
+                            </h6>
+                        </div>
+                        <div id="collapse{{ loop.index }}" class="collapse {% if loop.index==1 %}show{% endif %}" 
+                            aria-labelledby="heading{{ loop.index }}" 
+                            data-parent="#accordion">
+                            <div class="card-body">
+                                {{ faq.answer|md }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

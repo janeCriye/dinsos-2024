@@ -1,0 +1,61 @@
+url = "/kabar/bidangold/:slugunitkerja/:page?"
+layout = "default2"
+title = "Kabar Dari Unit"
+is_hidden = 0
+child_of = "home"
+hide_crumb = 0
+remove_crumb_trail = 0
+crumb_disabled = 0
+
+[daftarTulisanDiUnitKerja daftarTulisanDiUnitKerjaNya]
+unitKerjaFilter = "{{ :slugunitkerja }}"
+paramHalaman = "{{ :page }}"
+jumlahItemPerHalaman = 10
+halamanDetail = "kabar-baca"
+tampilPagination = "true"
+
+[informasiTambahan informasiTambahanUnit]
+slug = "{{ :slugunitkerja }}"
+==
+{# {% partial 'site/_page_title' %} #}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <ul class="nav nav-tabs" id="infoTambahan" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="tab-berita" data-toggle="tab"
+                            href="#berita" role="tab" aria-controls="berita" aria-selected="true">
+                            Berita Unit
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" id="tab-info" data-toggle="tab" href="#info" role="tab" aria-controls="berita"
+                            aria-selected="true">
+                            Tentang Unit
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content p-2" id="infoTambahanContent">
+                    <div class="tab-pane fade show active" id="berita" role="tabpanel" aria-labelledby="home-tab">
+                        {% component 'daftarTulisanDiUnitKerjaNya' %}
+                    </div>
+                    <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="home-tab">
+                        {% component 'informasiTambahanUnit' %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 order-lg-first mt-lg-0 pt-1 pt-lg-0">
+                <div class="sidebar">
+                    <div class="widget">
+                        <div class="newsletter_form">
+                            {% partial '_pencarian_form' %}
+                        </div>
+                    </div>
+                    {% partial 'site/_kabar_berita_widget' %}
+                    {% partial 'site/_pengumuman_widget' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

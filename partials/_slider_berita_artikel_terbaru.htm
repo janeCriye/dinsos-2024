@@ -1,3 +1,9 @@
+[tulisanList daftarSliderBeritaArtikel]
+paramHalaman = "{{ :page }}"
+jumlahItemPerHalaman = 10
+halamanDetail = "beranda"
+tampilPagination = "true"
+==
 <section class="overflow-hidden bg-very-light-gray position-relative">
     <div class="container mb-10">
         <div class="row align-items-center mb-5 sm-mb-30px text-center text-lg-start"
@@ -18,49 +24,9 @@
 
         <div class="row align-items-center"
             data-anime='{"opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad"}'>
-            <div class="col-12">
-                <div class="outside-box-right-20 sm-outside-box-right-0">
-                    <div class="swiper magic-cursor slider-one-slide"
-                        data-slider-options='{"slidesPerView": 1, "spaceBetween": 30, "loop": true, "navigation": {"nextEl": ".slider-one-slide-next-1", "prevEl": ".slider-one-slide-prev-1"}, "autoplay": {"delay": 4000, "disableOnInteraction": false}, "keyboard": {"enabled": true, "onlyInViewport": true}, "breakpoints": {"1200": {"slidesPerView": 4}, "992": {"slidesPerView": 3}, "768": {"slidesPerView": 2}, "320": {"slidesPerView": 1}}, "effect": "slide"}'>
-                        <div class="swiper-wrapper">
-                            {% for post in posts %}
-                            {% set headerDef = 'assets/images/image_1.jpg'|theme %}
-                            {% set header = post.gambar_header.path | default(headerDef) %}
-                            <!-- Slider Item -->
-                            <div class="swiper-slide">
-                                <div class="services-box-style-03 last-paragraph-no-margin border-radius-6px overflow-hidden">
-                                    <div class="position-relative">
-                                        <a href="{{ post.url }}">
-                                            <img src="{{ header | resize(360, 250, { mode:'crop' }) }}" alt="{{ post.judul }}">
-                                        </a>
-                                        {% if post.kategori.count %}
-                                        {% for category in post.kategori %}
-                                        <a href="{{ 'kabar-kategori'|page({slugkategori:category.slug}) }}"
-                                            class="btn btn-very-small btn-rounded btn-dark-gray text-white btn-box-shadow ps-15px pe-15px pt-5px pb-5px lh-16 position-absolute right-30px top-30px text-uppercase">{{ category.nama }}</a>
-                                        {% endfor %}
-                                        {% endif %}
-                                    </div>
-                                    <div class="bg-white">
-                                        <div class="ps-65px pe-65px pt-30px pb-30px text-center">
-                                            <a href="{{ post.url }}" class="d-inline-block fs-18 fw-700 text-dark-gray mb-5px">{{ post.judul }}</a>
-                                            <p>{{ post.deskripsi | default('Deskripsi tidak tersedia.') }}</p>
-                                        </div>
-                                        <div class="d-flex justify-content-center border-top border-color-extra-medium-gray pt-20px pb-20px ps-50px pe-50px position-relative text-center">
-                                            <a href="{{ post.url }}" class="btn btn-link btn-hover-animation-switch btn-medium fw-700 text-dark-gray text-uppercase">
-                                                <span>
-                                                    <span class="btn-text">Explore Services</span>
-                                                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+        {% component "daftarSliderBeritaArtikel"%}
+        
         </div>
     </div>
 

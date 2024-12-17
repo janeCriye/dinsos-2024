@@ -6,3 +6,13 @@ authorCode: ''
 code: ''
 parent: ''
 database: '0'
+form:
+  fields:
+    homepage_dinsos_image:
+      label: Gambar Di Homepage
+      comment: Pilih dari media gambar untuk homepage.
+      type: mediafinder
+      mode: image
+      imageWidth: 540
+      imageHeight: 406
+      maxItems: 1

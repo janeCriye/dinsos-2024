@@ -1,0 +1,57 @@
+{#
+jangan lupa untuk melakukan set terhadap variable gambar_lainnya 
+sebagai contoh saat memanggil partial 'site/_load_gambar_lainnya' gambar_lainnya=post.gambar_lainnya 
+#}
+{# {% if gambar_lainnya.count > 1 %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="heading_s3">
+            <h5><i class="fa fa-images"></i> Gambar Berkaitan</h5>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <ul class="portfolio_container work_col4 gutter_small image_gallery">
+            <li class="grid-sizer"></li>
+            {% for image in gambar_lainnya %}
+            {% if loop.index0 > 0 %}
+            <li class="portfolio-item">
+                <a href="{{ image.path }}" title="{{ image.title }}">
+                    <img src="{{ image.getThumb(360, 240, 'fit') }}" alt="{{ image.description }}">
+                </a>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %} #}
+
+{% if gambar_lainnya.count > 1 %}
+        <section style="background-image: url(images/portfolio-single-gallery-07.jpg)">
+        <
+            <div class="container">
+                <div class="row">
+                <div class="col-12"><h6 class="alt-font fw-500 text-dark-gray mb-20px">Gambar terkait</h6></div>
+                    <div class="col-12 overlap-section">
+                        <div class="overlap-section-inner box-shadow-large border-10 border-solid border-color-white"> 
+                            <div class="swiper magic-cursor light" data-slider-options='{ "slidesPerView": 1, "spaceBetween": 0, "effect": "fade", "speed": 1200, "loop": true, "autoplay": { "delay": 1500, "disableOnInteraction": false },  "pagination": { "el": ".slider-three-slide-pagination", "clickable": true, "dynamicBullets": true }, "navigation": { "nextEl": ".slider-one-slide-next-1", "prevEl": ".slider-one-slide-prev-1" }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "992": { "slidesPerView": 1 }, "768": { "slidesPerView": 1 }, "320": { "slidesPerView": 1 } } }'>
+                                <div class="swiper-wrapper">
+                                    <!-- start slider item --> 
+                                                {% for image in gambar_lainnya %}
+            {% if loop.index0 > 0 %}
+                                    <div class="swiper-slide">
+                                        <img src="{{ image.getThumb(360, 240, 'fit') }}" alt="{{ image.description }}" class="w-100" /> 
+                                    </div>
+                                                {% endif %}
+            {% endfor %}
+                                    <!-- end slider item --> 
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endif %}

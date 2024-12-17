@@ -1,0 +1,26 @@
+title = "Agenda Pada"
+url = "/agenda/pada/:fromDate/:toDate?"
+layout = "default"
+is_hidden = 0
+child_of = "agenda-kalender"
+hide_crumb = 0
+remove_crumb_trail = 0
+crumb_disabled = 0
+
+[daftarkegiatanpada agendaDaftarKegiatanPada]
+fromDate = "{{ :fromDate }}"
+toDate = "{{ :toDate }}"
+postsPerPage = 10
+detailPage = "agenda/detail"
+tidakAdaJadwal = "Tidak ada jadwal dimasukkan"
+==
+{% partial 'site/_page_title' %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                {% component 'agendaDaftarKegiatanPada' %}
+            </div>
+        </div>
+    </div>
+</section>

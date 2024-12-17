@@ -1,0 +1,44 @@
+url = "/pegawai/:page?"
+layout = "default3"
+title = "Pegawai"
+is_hidden = 0
+meta_title = "Daftar Pegawai"
+child_of = "home"
+hide_crumb = 0
+remove_crumb_trail = 0
+crumb_disabled = 0
+
+[pegawaiList]
+paramHalaman = "{{ :page }}"
+jumlahItemPerHalaman = 10
+==
+{% set defaultPict = "assets/images/avatar-blank.png" | theme %}
+
+            <div class="col-md-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                <div class="heading_s1 text-center">
+                        <h2 class="fw-bold text-center text-primary mb-4">Pegawai DINSOS Provinsi Kalimantan Tengah</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="cleafix small_divider"></div>
+            </div>
+        </div>
+        <div class="row">
+            {% for post in posts %}
+            <div class="col-lg-3 col-sm-6 mb-lg-5 mb-sm-4 pb-sm-1 pb-3">
+                <div class="team_box light_gray_bg2">
+                    <div class="team_img">
+                        <img src="{{ post.fotopegawai.getThumb(250, 250, 'crop') }}" alt="{{ post.nama }}">
+                    </div>
+                    <div class="team_title">
+                        <h6>{{ post.nama }}</h6>
+                        {% if post.bio | length > 0 %}
+                            {{ post.bio | raw }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}

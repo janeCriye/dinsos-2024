@@ -1,0 +1,45 @@
+url = "/halaman/:slug"
+layout = "default2"
+title = "Halaman"
+is_hidden = 0
+child_of = "home"
+hide_crumb = 0
+remove_crumb_trail = 0
+crumb_disabled = 0
+
+[tulisanDetail]
+slug = "{{ :slug }}"
+id = "{{ :id }}"
+==
+<?php
+function onStart() {
+    $this->page['meta_title'] = ucwords(str_replace("-", " ", $this->param('slug')));
+}
+?>
+==
+{% partial 'site/_page_title' %}
+<section>
+    <div class="container">
+        <div class="col-lg-12">
+            <div class="single_post">
+                {% if post.gambar_header %}
+                <div class="blog_img">
+                    <p>
+                        {% set headerDef = 'assets/images/image_2.jpg'|theme %}
+                        {% set header = post.gambar_header.path | default(headerDef) %}
+                        <img src="{{ header | resize(1200, 750) }}" alt="" class="img-fluid">
+                    </p>
+                </div>
+                {% endif %}
+                <div class="blog_content bg-white">
+                    <h2 class="mb-3 heading">{{ post.judul }}</h2>
+                    <div class="list_none blog_meta">
+                        <span><i class="ti-calendar"></i> {{ post.tgl_tampil | date('d-m-Y') }}</span> /
+                        <span><i class="fa fa-calendar-check"></i> {{ post.updated_at | date('d-m-Y') }}</span>
+                    </div>
+                    {{ post.isi | raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

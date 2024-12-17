@@ -1,0 +1,26 @@
+url = "/search"
+layout = "pencarian"
+title = "Hasil Pencarian"
+is_hidden = 0
+child_of = "home"
+hide_crumb = 0
+remove_crumb_trail = 0
+crumb_disabled = 0
+
+[searchResults]
+resultsPerPage = 10
+showProviderBadge = 1
+noResultsMessage = "Your search returned no results."
+visitPageMessage = "Kunjungi Hasil Pencarian"
+minQueryLength = 0
+==
+{# {% partial 'site/_page_title' %} #}
+{# <section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12"> #}
+                {% component 'searchResults' %}
+            {# </div>
+        </div>
+    </div>
+</section> #}

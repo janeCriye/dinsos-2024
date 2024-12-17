@@ -1,0 +1,21 @@
+<form action="{{ 'search' | page }}" class="d-flex align-items-center">
+    <div class="input-group">
+        <input 
+            name="q" 
+            type="text" 
+            class="form-control" 
+            placeholder="Cari..." 
+            required 
+            aria-label="Search"
+        >
+        <button 
+            type="submit" 
+            title="Search" 
+            class="btn btn-primary btn-sm" 
+            name="submit" 
+            value="Submit"
+        >
+            <i class="bi bi-search"></i>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,57 @@
+<div class="row g-0"> 
+    <!-- start features box item -->
+    <div class="col-12" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+        <ul class="blog-grid blog-wrapper grid-loading grid grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+            <li class="grid-sizer"></li>
+            <!-- start dynamic blog items -->
+            {% for post in posts %}
+                {% set headerDef = 'https://via.placeholder.com/600x430' %}
+                {% set header = post.gambar_header.path | default(headerDef) %}
+            <li class="grid-item">
+                <div class="card border-0 border-radius-5px box-shadow-quadruple-large box-shadow-quadruple-large-hover">
+                    <div class="blog-image" style="height: 250px; overflow: hidden;">
+                        <a href="{{ post.url }}" class="d-block">
+                            <img src="{{ header | resize(600,600, { mode:'crop' }) }}" alt="{{ post.judul }}" />
+                        </a>
+                            {% if post.kategori.count %}
+                            {% for category in post.kategori %}
+                            <a href="{{ 'kabar-bidang'|page({slugkategori:category.slug}) }}"
+                                class="btn btn-very-small btn-rounded btn-dark-gray text-white btn-box-shadow ps-15px pe-15px pt-5px pb-5px lh-16 position-absolute right-30px top-30px text-uppercase">{{
+                                category.nama }}</a>
+                            {% endfor %}
+                            {% endif %}
+                    </div>
+                    <div class="card-body p-13 md-p-11">
+                        <a href="{{ post.url }}" class="text-uppercase card-title mb-15px fw-600 fs-18 lh-28 text-dark-gray d-inline-block w-90 md-w-100">
+                            {{ post.judul | slice(0, 20) }}{% if post.judul|length > 20 %}...{% endif %}
+                        </a>
+                        <p>
+                            {% if post.ringkasan %}
+                                {{ post.ringkasan | slice(0, 20) }}{% if post.ringkasan|length > 20 %}...{% endif %}
+                            {% else %}
+                                Tidak ada ringkasan
+                            {% endif %}
+                        </p>
+                        <div class="author d-flex justify-content-center align-items-center position-relative overflow-hidden fs-14 text-uppercase">
+                            <div class="me-auto">
+                                <span class="blog-date d-inline-block fw-600 text-dark-gray"><i class="bi bi-calendar"></i> {{ post.tgl_tampil | date('d F Y') }}</span>
+                                <div class="d-inline-block author-name fw-600 text-dark-gray">
+                                    <span class="text-dark-gray"><i class="bi bi-calendar2-check"></i> {{ post.updated_at | date('d F Y') }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {% else %}
+            <li class="grid-item">
+                <div class="alert alert-danger" style="height: 300px; display: flex; justify-content: center; align-items: center;">Belum ada postingan tersedia.</div>
+            </li>
+            {% endfor %}
+            <!-- end dynamic blog items -->
+        </ul>
+    </div>
+    <div class="col-12 mt-5 mb-5 d-flex justify-content-center" data-anime='{ "el": "childs", "translateY": [0, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+        {% partial '_pagination' records=posts %}
+    </div> 
+</div>

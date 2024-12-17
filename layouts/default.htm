@@ -4,9 +4,12 @@
 
 <head>
     {% partial "site/_header" %}
+    {%  styles %}
 </head>
 
 <body data-mobile-nav-style="full-screen-menu" data-mobile-nav-bg-color="#252840">
+{# {% partial "_informasi_waktu"%} #}
+
 {% partial "site/_body_header" %}
 
 {% page %}
@@ -16,7 +19,7 @@
     {% partial'site/_body_gulir' %}
 
     {% partial'site/_body_js_script' %}
-
+    {% scripts %}
 </body>
 
 </html>

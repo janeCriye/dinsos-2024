@@ -1,0 +1,66 @@
+{% set currentSlug = __SELF__.currentSlug %}
+{% set kegiatan = __SELF__.kegiatan %}
+{% set banding = date(kegiatan.tgl_mulai) %}
+{% set theNow  = date(theNow) %}
+{# 
+        Di sini tampilkan semua!
+    #}
+{% set tampilkan = true %} {#theNow == banding ? false: (theNow < banding ? false : true) #}
+{% if user %}
+{% set tampilkan = true %}
+{% endif %}
+{% if tampilkan %}
+<div class="col-md-12 col-lg-12 col-sm-1 mb-1">
+	<div class="card h-100 bg-light border-primary">
+		<img class="card-img-top" src="{{ kegiatan.cover.path | resize(800) }}"
+			alt="Cover kegiatan">
+		<div class="card-body">
+			<h5 class="card-title">{{ kegiatan.judul  }}</h5>
+			<div class="card-text">{{ kegiatan.ringkasan }}</div>
+			{% if kegiatan.gambar.count > 0 %}
+			<hr>
+			<div class="card-text">
+				<h6>Gambar Berkaitan:</h6>
+				<ul class="portfolio_container work_col4 gutter_small image_gallery">
+					<li class="grid-sizer"></li>
+					{% for image in kegiatan.gambar %}
+					{# sekarang sudah menggunakan header image, jadi tidak usah melangkahi gambar pertama #}
+					{# if loop.index0 > 0 #}
+					<li class="portfolio-item">
+						<a href="{{ image.path }}" title="{{ image.title }}">
+							<img src="{{ image.getThumb(360, 240, 'fit') }}" alt="image">
+							<caption>{{ image.title }}</caption>
+						</a>
+					</li>
+					{# endif #}
+					{% endfor %}
+				</ul>
+			</div>
+			{% endif %}
+			{% if kegiatan.lampiran.count > 0 %}
+			<hr>
+			<div class="card-text">
+				<h6>Bahan Kegiatan:</h6>
+				<div class="disc_list">
+					<ul>
+						{% for bahan in kegiatan.lampiran %}
+						<li><a title="Download bahan" href="{{ bahan.path }}">{{ bahan.fileName }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			{% endif %}
+		</div>
+		<ul class="list-group">
+			<li class="list-group-item"><i class="fas fa-calendar-check" aria-hidden="true"></i>
+				{{ kegiatan.tgl_mulai|date('d-m-Y') }}</li>
+			<li class="list-group-item"><i class="fas fa-clock" aria-hidden="true"></i>
+				{{ kegiatan.jam_mulai|date('H:i') }}</li>
+			<li class="list-group-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> {{ kegiatan.lokasi }}
+			</li>
+			<li class="list-group-item"><i class="fas fa-user-lock" aria-hidden="true"></i>
+				{{ kegiatan.pelaksana_kegiatan ?: 'SOPD Prov Kalteng' }}</li>
+		</ul>
+	</div>
+</div>
+{% endif %}

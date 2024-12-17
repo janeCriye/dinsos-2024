@@ -1,1 +1,22 @@
-static-pages: {  }
+static-pages:
+    tentang:
+        tentang-visi: {  }
+        tentang-misi: {  }
+        tentang-motto-dinas-sosial: {  }
+        tentang-sarana-prasarana: {  }
+        tentang-struktur-kepegawaian: {  }
+    ppid:
+        ppid-tugas-pokok-fungsi: {  }
+        ppid-struktur-organisasi: {  }
+        ppid-struktur-ppid: {  }
+        ppid-renstra: {  }
+        ppid-daftar:
+            ppid-daftar-informasi-publik-daftar-informasi-publik: {  }
+        ppid-tata-cara-memperoleh-informasi: {  }
+        ppid-mengajukan-keberatan-informasi-publik: {  }
+        ppid-penyalahgunaan-wewenang: {  }
+    rup: {  }
+    kontak-kami: {  }
+    pelayanan:
+        pelayanan-pmks: {  }
+        pelayanan-psks: {  }

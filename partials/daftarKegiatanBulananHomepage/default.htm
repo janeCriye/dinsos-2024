@@ -1,0 +1,49 @@
+{% if kegiatan.count > 0 %}
+    <div class="blog_content_wrap carousel_slide3 owl-carousel owl-theme nav_top" data-loop="true" data-autoplay="true"
+        data-nav="true" data-margin="15" data-dots="false">
+    {% for kegiatan in daftarKegiatan %}
+        {% set banding = date(kegiatan.tgl_mulai) %}
+        {% set theNow  = date(theNow) %}
+        {# 
+            Di sini tampilkan semua!
+        #}
+        {% set tampilkan = true %} {#theNow == banding ? false: (theNow < banding ? false : true) #}
+        {% if user %}
+            {% set tampilkan = true %}
+        {% endif %}
+        {% if tampilkan %}
+        
+        <div class="item">
+            <div class="blog_postcontent_wrap">
+                <div class="sp_post">
+                    <a href="{{ kegiatan.url }}">
+                        <div class="post_thumb">
+                            <img src="{{ kegiatan.cover.path | resize(360, 250, { mode:'crop' }) }}" alt="{{ kegiatan.judul }}" />
+                        </div>
+                    </a>
+                    <div class="blog_postcontent postcontent_light">
+                        <div class="blog_tags">
+                            <a class="blog_tags_cat blog_bg_danger"
+                                href="#"><i class="fas fa-calendar-check" aria-hidden="true"></i>
+                                    {{ kegiatan.tgl_mulai|date('d-m-Y') }} {{ kegiatan.jam_mulai|date('H:i') }}
+                            </a>
+                            <a class="blog_tags_cat blog_bg_danger" href="#">
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                {{ kegiatan.lokasi }}
+                            </a>
+                        </div>
+                        <div class="post_info">
+                            <div class="blog_heading">
+                                <h6><a href="{{ post.url }}">{{ kegiatan.judul }}</a></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+{% else %}
+Belum ada agenda bulan ini
+{% endif %}

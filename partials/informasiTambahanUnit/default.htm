@@ -1,0 +1,28 @@
+{% set infoTambahan = __SELF__.data %}
+
+{% for info in infoTambahan %}
+    <ul class="nav nav-tabs" id="infoTambahan" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link{{ loop.index0 == 0?' active':''}}" 
+                id="tab{{ loop.index0 }}" 
+                data-toggle="tab" 
+                href="#tabm{{ loop.index0 }}" 
+                role="tab" 
+                aria-controls="tabm{{ loop.index0 }}"
+                aria-selected="true">
+                {{ info.info_tambahan_judul }}
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content" id="infoTambahanContent">
+        <div class="tab-pane p-1 fade {% if loop.index0 == 0 %}show active{% endif %}" id="tabm{{ loop.index0 }}" 
+            role="tabpanel" 
+            aria-labelledby="home-tab">
+            {{ info.info_tambahan_isi | raw }}
+        </div>
+    </div>
+{% else %}
+    <div class="alert alert-danger" role="alert">
+        Unit ini belum mengisikan informasi tentang Unitnya.
+    </div>
+{% endfor %}

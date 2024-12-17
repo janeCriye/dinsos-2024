@@ -1,0 +1,74 @@
+{% set survey = __SELF__.survey %}
+<div class="container">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-center text-primary mb-4">{{ survey.nama }}</h2>
+        <p class="alert alert-warning d-flex align-items-start p-3 shadow-sm border rounded"><i class="bi bi-exclamation-triangle-fill me-3" style="font-size: 1.5rem;"></i> Isi survey berikut untuk membantu kami mendapatkan feedback terbaik.</p>
+    </div>
+    <div id="formContainer" class="card border-0 rounded-lg p-4 bg-white">
+        <div class="card-body">
+            <form
+                role="form"
+                data-request="{{ __SELF__ }}::onSubmitAnswer" 
+                data-request-update="'{{ __SELF__ }}::result': '#formContainer'"
+                data-request-flash>
+                
+                {% for pertanyaan in survey.daftarPertanyaan %}
+                    {% set nameidform = "s-" ~ survey.id ~ "-p-" ~ pertanyaan.id %}
+                    <div class="form-group mb-4">
+                        <label class="form-label fw-bold">{{ loop.index }}. {{ pertanyaan.pertanyaan }}</label>
+                        
+                        {% if pertanyaan.cara_menjawab == 'radio' %}
+                            <div class="mt-2">
+                                {% for pilihan in pertanyaan.pilihan %}
+                                    <div class="form-check">
+                                        <input type="radio" 
+                                               class="form-check-input" 
+                                               id="{{ nameidform }}-{{ loop.index }}" 
+                                               name="{{ nameidform }}" 
+                                               value="{{ pilihan.pilihan_label }}" 
+                                               {% if pertanyaan.wajib_dijawab %}required{% endif %}>
+                                        <label class="form-check-label" for="{{ nameidform }}-{{ loop.index }}">
+                                            {{ pilihan.pilihan_label }}
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        
+                        {% elseif pertanyaan.cara_menjawab == 'checkbox' %}
+                            {% set nameidform = nameidform ~ "[]" %}
+                            <div class="mt-2">
+                                {% for pilihan in pertanyaan.pilihan %}
+                                    <div class="form-check">
+                                        <input type="checkbox" 
+                                               class="form-check-input" 
+                                               id="{{ nameidform }}-{{ loop.index }}" 
+                                               name="{{ nameidform }}" 
+                                               value="{{ pilihan.pilihan_label }}">
+                                        <label class="form-check-label" for="{{ nameidform }}-{{ loop.index }}">
+                                            {{ pilihan.pilihan_label }}
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        
+                        {% elseif pertanyaan.cara_menjawab == 'text' %}
+                            <textarea maxlength="5000" 
+                                      class="form-control rounded-lg shadow-sm" 
+                                      rows="5" 
+                                      id="{{ nameidform }}" 
+                                      name="{{ nameidform }}" 
+                                      placeholder="Ketik jawaban Anda di sini..." 
+                                      {% if pertanyaan.wajib_dijawab %}required{% endif %}></textarea>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                
+                <div class="text-center">
+                    <button data-attach-loading 
+                            class="btn btn-primary btn-lg shadow-sm px-4 py-2" 
+                            type="submit">Kirim Survey</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

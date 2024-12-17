@@ -1,0 +1,106 @@
+{# untuk gambar berkaitan agar menggunakan partial / bagian program yang memanggil post #}
+
+{# {% if post.gambar_header.path %}
+
+    {% if post.gambar_header.title and post.gambar_header.title[:6] == "video:" %}
+        <div class="blog_img">
+            <video controls autoplay="autoplay" muted height="100%" width="100%">
+                <source src="{{ post.gambar_header.title[7:] }}" type="video/mp4">
+                    &nbsp;Your browser does not support the video tag.
+            </video>
+        </div>
+    {% else %}
+        <div class="blog_img">
+            {% set headerDef = 'assets/images/image_2.jpg'|theme %}
+            {% set header = post.gambar_header.path | default(headerDef) %}
+            <img src="{{ header | resize(1200, 750, {mode:'exact'}) }}" alt="" class="img-fluid">
+        </div>
+     {% endif %}
+{% endif %}
+
+{% set kategoriSlugBreadcrumb = "#" %}
+
+<div class="blog_content bg-white">
+    <h2 class="mb-3 heading">{{ post.judul }}</h2>
+    <ul class="list_none blog_meta">
+        <li>
+            <i class="ti-calendar"></i> {{ post.tgl_tampil | date('d-m-Y') }}
+        </li>
+        <li>
+            <i class="fa fa-calendar-check"></i> {{ post.updated_at | date('d-m-Y') }}
+        </li>
+        <li>
+            {% if post.kategori.count %} <i class="fa fa-boxes"></i> 
+            {% for category in post.kategori %}
+                {% if loop.index0 == 0 %} 
+                    {% set kategoriSlugBreadcrumb = category.slug %}
+                {% endif %}
+                <a href="{{ 'kabar-kategori'|page({slugkategori:category.slug}) }}">{{ category.nama }}</a>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+            {% endif %}
+        </li>
+    </ul>
+    {{ post.isi | raw }}
+</div>
+<div class="py-4 blog_post_footer">
+    <div class="row justify-content-between align-items-center">
+        <div class="col-md-8 mb-3 mb-md-0">
+            {% if post.kategori.count %} <div class="tags">
+            {% for category in post.kategori %}
+            <a href="{{ 'kabar-kategori'|page({slugkategori:category.slug}) }}">{{ category.nama }}</a>{% if not loop.last %},
+            {% endif %}
+            {% endfor %}</div>
+            {% endif %}
+        </div>
+    </div>
+</div> #}
+
+            {% set headerDef = 'assets/images/image_2.jpg'|theme %}
+            {% set header = post.gambar_header.path | default(headerDef) %}
+            {# <img src="{{ header | resize(1200, 750, {mode:'exact'}) }}" alt="" class="img-fluid"> #}
+        <section class="full-screen ipad-top-space-margin sm-h-600px" data-parallax-background-ratio="0.5" style="background-image: url('{{ header }}');">
+            <div class="opacity-light bg-dark-gray"></div>
+            <div class="container-fluid z-index-1 position-relative h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-xxl-9 col-xl-10 col-lg-11 d-flex flex-column justify-content-center">
+                        <div class="ps-15 pe-15 md-ps-10 md-pe-10 sm-px-0" data-anime='{ "el": "childs", "translateX": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                            <span class="alt-font fs-20 text-white mb-3 d-inline-block fw-300"> <i class="bi bi-calendar"></i> {{ post.tgl_tampil | date('d F Y') }} | <i class="bi bi-calendar2-check"></i> {{ post.updated_at | date('d F Y') }} </span>
+                            <h1 class="alt-font text-white fw-600 mb-5 ls-minus-2px">{{ post.judul }}</h1>
+                            {# <a href="demo-it-business-blog.html" class="btn btn-large btn-white btn-hover-animation-switch btn-box-shadow btn-rounded fw-600">Corporate</a> #}
+                                        {% if post.kategori.count %}
+            {% for category in post.kategori %}
+                {% if loop.index0 == 0 %} 
+                    {% set kategoriSlugBreadcrumb = category.slug %}
+                {% endif %}
+                <a href="{{ 'kabar-kategori'|page({slugkategori:category.slug}) }}" class="btn btn-primary btn-lg">{{ category.nama }}</a>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                <section class="bg-gradient-top-very-light-gray">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9 last-paragraph-no-margin" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                        <h5 class="alt-font fw-600 text-dark-gray">    {{ post.judul}}</h5>
+                        <p>    {{ post.isi | raw }}</p>
+                    </div>
+                    <div class="col-lg-3 order-lg-last mt-lg-0 pt-1 pt-lg-0">
+                <div class="sidebar">
+                    <div class="widget">
+                        <div class="newsletter_form">
+                            {% partial '_pencarian_form' %}
+                        </div>
+                    </div>
+                    {% partial 'site/_kabar_berita_widget' %}
+                    {% partial 'site/_pengumuman_widget' %}
+                </div>
+            </div>
+                </div>
+                        {% partial '_load_gambar_lainnya' gambar_lainnya=post.gambar_lainnya %}
+            </div>
+
+        </section>

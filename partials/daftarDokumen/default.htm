@@ -1,0 +1,64 @@
+{% if tagTerpilih|length > 0 and tagTerpilih != 'default' %}
+
+<div class="alert alert-info d-flex justify-content-between align-items-center" style="background-color: #f0f8ff;">
+    <h7 class="mb-0">
+        <i class="fa fa-info-circle"></i> 
+        Klasifikasi Dokumen : 
+        <span class="badge bg-primary">{{ tagTerpilihNama }}</span>
+    </h7>
+    <a class="btn btn-danger btn-sm" href="{{ resetUrl }}">
+        <i class="fa fa-times-circle"></i> Reset
+    </a>
+</div>
+
+
+{% endif %}
+
+{% for post in posts %}
+
+<div class="card mb-3 bg-gradient-light-gray-transparent border-secondary">
+    <div class="card-body">
+        <h5 class="card-title">{{ post.nama }}</h5>
+        <p class="card-text">{{ post.keterangan|raw }}</p>
+        {% for f in post.filenya %}
+        <a class="badge bg-primary px-2 py-2" title="Download file {{ f.fileName }}" href="{{ f.path }}"><i
+                class="fa fa-download"></i> {{ f.fileName }}</a>
+        {% else %}
+        <p>Tidak ada file di bagikan!</p>
+        {% endfor %}
+    </div>
+    <div class="card-footer">
+        <div class="tags">
+            {% for t in post.catnya %}
+            <a class="badge bg-success"
+                href="{{ post.generateTagUrl(this.page.id, this.controller, paramPage, paramTag, t) }}">
+                <small><i class="fa fa-tag"></i> {{ t.nama }}</small>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% if posts.lastPage > 1 %}
+<ul class="pagination">
+    {% if posts.currentPage > 1 %}
+    <li class="page-item"><a class="page-link"
+            href="{{ this.page.baseFileName|page({ (paramTag) : tagTerpilih , (paramHalaman): (records.currentPage-1) }) }}">
+            <i class="ion-ios-arrow-thin-left"></i></a></li>
+    {% endif %}
+
+    {% for page in 1..posts.lastPage %}
+    <li class="page-item {{ posts.currentPage == page ? 'active' : null }}">
+        <a class="page-link"
+            href="{{ this.page.baseFileName|page({ (paramTag) : tagTerpilih ,(paramHalaman): page }) }}">{{ page }}</a>
+    </li>
+    {% endfor %}
+
+    {% if posts.lastPage > posts.currentPage %}
+    <li class="page-item">
+        <a class="page-link"
+            href="{{ this.page.baseFileName|page({ (paramTag) : tagTerpilih ,(paramHalaman): (posts.currentPage+1) }) }}">
+            <i class="ion-ios-arrow-thin-right"></i></a></li>
+    {% endif %}
+</ul>
+{% endif %}

@@ -1,0 +1,45 @@
+url = "/dokumen-jenis/:slug?/:page?"
+layout = "default3"
+title = "Dokumen Berdasarkan Jenis Informasi"
+is_hidden = 0
+child_of = "home"
+hide_crumb = 0
+remove_crumb_trail = 0
+crumb_disabled = 0
+
+[daftarBerdasarkanJenisInformasi]
+jumlahItem = 20
+paramJenisInformasi = "{{ :slug }}"
+paramHalaman = "{{ :page }}"
+halamanDetail = "dokumen-detail"
+
+[daftarTags daftarDokumenTags]
+halamanDaftarDokumen = "dokumen"
+
+[daftarJenisInformasi]
+halamanDaftarDokumenJenis = "dokumen-jenis"
+==
+<div class="col-md-3 order-lg-first">
+                <div class="sidebar">
+                    <div class="widget">
+                        <div class="newsletter_form">
+                            {% partial '_pencarian_form' %}
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="heading_s3">
+                            <span class="mt-5 ps-25px pe-25px mb-20px text-uppercase text-base-color fs-12 lh-40 fw-700 border-radius-100px bg-gradient-light-gray-transparent d-inline-flex">Klasifikasi Dokumen</span>
+                        </div>
+                        {% component 'daftarDokumenTags' %}
+                    </div>
+                    <div class="widget">
+                        <div class="heading_s3">
+                            <span class="mt-5 ps-25px pe-25px mb-20px text-uppercase text-base-color fs-12 lh-40 fw-700 border-radius-100px bg-gradient-light-gray-transparent d-inline-flex">Jenis Informasi</span>
+                        </div>
+                        {% component 'daftarJenisInformasi' %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                {% component 'daftarBerdasarkanJenisInformasi' %}
+            </div>

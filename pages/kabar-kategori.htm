@@ -1,0 +1,31 @@
+url = "/kabar/kategori/:slugkategori/:page?"
+layout = "default2"
+title = "Kabar Berita"
+is_hidden = 0
+meta_title = "Baca Kabar"
+child_of = "home"
+hide_crumb = 0
+remove_crumb_trail = 0
+crumb_disabled = 0
+
+[tulisanList daftarKabarBerita]
+paramHalaman = "{{ :page }}"
+jumlahItemPerHalaman = 9
+filterKategori = "{{ :slugkategori }}"
+halamanDetail = "kabar-baca"
+tampilPagination = "true"
+==
+<div class="col-lg-9">
+                {% component 'daftarKabarBerita' %}
+            </div>
+            <div class="col-lg-3 order-lg-first mt-lg-0 pt-1 pt-lg-0">
+                <div class="sidebar">
+                    <div class="widget">
+                        <div class="newsletter_form">
+                            {% partial '_pencarian_form' %}
+                        </div>
+                    </div>
+                    {% partial 'site/_kabar_berita_widget' %}
+                    {% partial 'site/_pengumuman_widget' %}
+                </div>
+            </div>

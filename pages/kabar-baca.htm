@@ -1,0 +1,39 @@
+url = "/kabar/baca/:slug"
+layout = "default"
+title = "Membaca Publikasi"
+is_hidden = 0
+child_of = "home"
+hide_crumb = 0
+remove_crumb_trail = 0
+crumb_disabled = 0
+
+[tulisanDetail bacaKabarBerita]
+slug = "{{ :slug }}"
+id = "{{ :id }}"
+==
+{# untuk breadcrumb ada di dalam component baca karena harus mengambil kategori nya! #}
+{# <section class="small_pt">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="single_post">
+                    {% component 'bacaKabarBerita' %}
+                </div>
+            </div>
+            <div class="col-lg-3 order-lg-last mt-lg-0 mt-4 pt-3 pt-lg-0">
+                <div class="sidebar">
+                    <div class="widget">
+                        <div class="newsletter_form">
+                            {% partial '_pencarian_form' %}
+                        </div>
+                    </div>
+                    {% partial 'site/_kabar_berita_widget' %}
+                    {% partial 'site/_pengumuman_widget' %}
+                </div>
+            </div>
+        </div>
+        {# {% partial 'site/_load_gambar_lainnya' gambar_lainnya=post.gambar_lainnya %} #}
+    {# </div>
+</section> #}
+
+{% component 'bacaKabarBerita' %}

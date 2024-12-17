@@ -1,0 +1,55 @@
+{% set grafisUnitKerja = __SELF__.grafisUnitKerja %}
+
+<div class="container">
+        <h2 class="fw-bold text-center text-primary mb-4">Grafis Unit Kerja</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle shadow-sm rounded">
+            <thead class="thead-light">
+                <tr>
+                    <th class="text-left">Nama Unit</th>
+                    <th class="text-center">Jumlah Publikasi</th>
+                    <th class="text-center">Progres</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for grafisData in grafisUnitKerja['record'] %}
+                    <tr>
+                        <td>
+                            <a href="/kabar/bidang/{{ grafisData.slug }}" class="text-decoration-none text-primary fw-bold">
+                                {{ grafisData.nama }}
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <span class="badge bg-info text-dark px-3 py-2">
+                                {{ grafisData.jumlah_posting }}
+                            </span>
+                        </td>
+                        {% set prosen = grafisData.jumlah_posting / grafisUnitKerja['total_posting'] * 100 %}
+                        <td>
+                            <div class="progress position-relative" style="height: 20px;">
+                                <div class="progress-bar bg-success text-dark fw-bold" 
+                                     style="width: {{ prosen }}%;" 
+                                     role="progressbar" 
+                                     aria-valuenow="{{ prosen }}" 
+                                     aria-valuemin="0" 
+                                     aria-valuemax="100">
+                                     {{ prosen | round(1) }}%
+                                </div>
+                                {# <span class="position-absolute top-50 start-50 translate-middle fw-bold text-dark small">
+                                    {{ prosen | round(1) }}%
+                                </span> #}
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-center text-muted small">
+                        Klik pada nama unit untuk mengakses publikasinya.
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

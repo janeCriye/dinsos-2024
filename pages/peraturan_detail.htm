@@ -1,0 +1,79 @@
+url = "/peraturan/baca/:slug"
+layout = "default"
+title = "Detail"
+is_hidden = 0
+child_of = "peraturan"
+hide_crumb = 0
+remove_crumb_trail = 0
+crumb_disabled = 0
+
+[tulisanDetail peraturanDetail]
+slug = "{{ :slug }}"
+id = "{{ :id }}"
+
+[kategori]
+slug = "{{ :slug }}"
+tampilkanYangKosong = 1
+filterKategori = "peraturan|peraturan-presiden|peraturan-pemerintah|peraturan-kementerian|peraturan-provinsi|undang-undang"
+halamanKategori = "peraturan/k"
+==
+<?php
+function onStart() {
+    $this->page['meta_title'] = ucwords(str_replace("-", " ", $this->param('slug')));
+}
+?>
+==
+{% partial 'site/_page_title' %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="single_post">
+                    {% if post.gambar_header %}
+                        <div class="blog_img">
+                            {% set headerDef = 'assets/images/image_2.jpg'|theme %}
+                            {% set header = post.gambar_header.path | default(headerDef) %}
+                            <img src="{{ header | resize(1200, 750, {mode:'exact'}) }}" alt="" class="img-fluid">
+                        </div>
+                    {% endif %}
+                    <div class="blog_content bg-white">
+                        <h2 class="mb-3 heading">{{ post.judul }}</h2>
+                        <div class="list_none blog_meta">
+                            <span><i class="ti-calendar"></i> {{ post.tgl_tampil | date('d-m-Y') }}</span> /
+                            <span><i class="fa fa-calendar-check"></i> {{ post.updated_at | date('d-m-Y') }}</span>
+                        </div>
+                        {{ post.isi | raw }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 order-lg-first mt-lg-0 mt-4 pt-3 pt-lg-0">
+                <div class="sidebar">
+                    <div class="widget">
+                        <div class="newsletter_form">
+                            <form>
+                                <div class="outline_input-black">
+                                    <input required="" placeholder="Cari..." type="text">
+                                </div>
+                                <button type="submit" title="Subscribe" class="btn btn-submit border-0" name="submit" value="Submit">
+                                    <span class="ti-search"></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget_title">Kategori</h5>
+                        <ul class="list_none widget_categories border_bottom_dash">
+                            {% for kat in kategori %}
+                            <li><a href="{{ kat.url }}"><span class="categories_name">{{ kat.nama }}</span><span class="categories_num">({{ kat.jumlah_tulisan }})</span></a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget_title">Berita Terbaru</h5>
+                        {% partial 'site/_berita_terbaru_widget' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

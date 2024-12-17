@@ -1,0 +1,9 @@
+{% set posts = __SELF__.posts %}
+<ul class="list-group">
+    {% for post in posts %}
+    <a href="{{ post.url }}" class="list-group-item d-flex justify-content-between align-items-center">
+        {{ post.nama }}
+        <span class="badge bg-primary badge-pill">{{ post.jumlah }}</span>
+    </a>
+    {% endfor %}
+</ul>

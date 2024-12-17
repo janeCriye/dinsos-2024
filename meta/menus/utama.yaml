@@ -1,0 +1,498 @@
+name: Utama
+items:
+    -
+        title: Beranda
+        nesting: ''
+        type: url
+        url: /
+        code: ''
+        reference: ''
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Publikasi
+        nesting: null
+        type: url
+        url: '#'
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: Artikel
+                nesting: null
+                type: url
+                url: /kabar/kategori/artikel
+                code: ''
+                reference: null
+                cmsPage: null
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Berita
+                nesting: null
+                type: url
+                url: /kabar/kategori/berita
+                code: ''
+                reference: null
+                cmsPage: null
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Pengumuman
+                nesting: null
+                type: url
+                url: /kabar/kategori/pengumuman
+                code: ''
+                reference: null
+                cmsPage: null
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Agenda
+                nesting: null
+                type: url
+                url: /agenda/kalender
+                code: ''
+                reference: null
+                cmsPage: null
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+    -
+        title: 'Kabar Unit'
+        nesting: ''
+        type: url
+        url: '#'
+        code: ''
+        reference: ''
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: 'Rehabilitasi Sosial'
+                nesting: ''
+                type: url
+                url: /kabar/bidang/bidang-rehabilitasi-sosial
+                code: ''
+                reference: ''
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Pemberdayaan Sosial'
+                nesting: ''
+                type: url
+                url: /kabar/bidang/bidang-pemberdayaan-sosial
+                code: ''
+                reference: ''
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Perlindungan dan Jaminan Sosial'
+                nesting: ''
+                type: url
+                url: /kabar/bidang/bidang-perlindungan-dan-jaminan-sosial
+                code: ''
+                reference: ''
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Penanganan Fakir Miskin'
+                nesting: ''
+                type: url
+                url: /kabar/bidang/bidang-penanganan-fakir-miskin
+                code: ''
+                reference: ''
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'UPT PSTW Sinta Rangkang'
+                nesting: ''
+                type: url
+                url: /kabar/bidang/upt-pstw-sinta-rangkang
+                code: ''
+                reference: ''
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'UPT PSBR Majar Tabela'
+                nesting: ''
+                type: url
+                url: /kabar/bidang/upt-psbr-majar-tabela
+                code: ''
+                reference: ''
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'UPT PSBL Pambelum'
+                nesting: ''
+                type: url
+                url: /kabar/bidang/upt-psbl-pambelum
+                code: ''
+                reference: ''
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'UPT PSKW Ruhul Rahayu'
+                nesting: ''
+                type: url
+                url: /kabar/bidang/upt-pskw-ruhul-rahayu
+                code: ''
+                reference: ''
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+    -
+        title: Pelayanan
+        nesting: ''
+        type: url
+        url: '#'
+        code: ''
+        reference: ''
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: Pelayanan
+                nesting: '1'
+                type: static-page
+                url: ''
+                code: ''
+                reference: pelayanan
+                cmsPage: ''
+                replace: '1'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'RUP Penyedia'
+                nesting: ''
+                type: url
+                url: 'https://sirup.lkpp.go.id/sirup/ro/penyedia/satker/60276'
+                code: ''
+                reference: ''
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'RUP Swakelola'
+                nesting: ''
+                type: url
+                url: 'https://sirup.lkpp.go.id/sirup/ro/swakelola/satker/60276'
+                code: ''
+                reference: ''
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Survey Kepuasan'
+                nesting: null
+                type: url
+                url: /survey-kepuasan
+                code: ''
+                reference: null
+                cmsPage: null
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Statistik Posting'
+                nesting: null
+                type: url
+                url: /statistik/posting-unit-kerja
+                code: ''
+                reference: null
+                cmsPage: null
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Grafis Permohonan Data'
+                nesting: null
+                type: url
+                url: /statistik/permohonan-data-ppid
+                code: ''
+                reference: null
+                cmsPage: null
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Grafis Pelaporan Bencana'
+                nesting: null
+                type: url
+                url: /statistik/pelaporan-bencana
+                code: ''
+                reference: null
+                cmsPage: null
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+    -
+        title: Dokumen
+        type: url
+        url: /dokumen
+        code: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Tentang
+        nesting: ''
+        type: url
+        url: '#'
+        code: ''
+        reference: ''
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: Tentang
+                nesting: '1'
+                type: static-page
+                url: ''
+                code: ''
+                reference: tentang
+                cmsPage: ''
+                replace: '1'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Daftar Personil'
+                nesting: ''
+                type: cms-page
+                url: ''
+                code: ''
+                reference: pegawai
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+    -
+        title: PPID
+        nesting: null
+        type: url
+        url: '#'
+        code: ''
+        reference: null
+        cmsPage: null
+        replace: null
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: PPID
+                nesting: '1'
+                type: static-page
+                url: ''
+                code: ''
+                reference: ppid
+                cmsPage: ''
+                replace: '1'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Form Permohonan'
+                nesting: null
+                type: url
+                url: /form-permohonan-data
+                code: ''
+                reference: null
+                cmsPage: null
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+    -
+        title: Kontak
+        nesting: ''
+        type: url
+        url: /kontak-kami
+        code: ''
+        reference: ''
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Tautan
+        nesting: ''
+        type: url
+        url: '#'
+        code: ''
+        reference: ''
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: Kalteng.go.id
+                nesting: ''
+                type: url
+                url: 'http://kalteng.go.id'
+                code: ''
+                reference: ''
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: E-Planning
+                nesting: ''
+                type: url
+                url: 'https://sippd.kalteng.go.id/landing/'
+                code: ''
+                reference: ''
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: E-Monev
+                nesting: ''
+                type: url
+                url: 'https://simp3d.kalteng.go.id/apps/2018/?mode=eis&bypass'
+                code: ''
+                reference: ''
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'LPSE Kalteng'
+                nesting: ''
+                type: url
+                url: 'https://lpse.kalteng.go.id'
+                code: ''
+                reference: ''
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: E-Budgeting
+                nesting: ''
+                type: url
+                url: 'http://ebudgeting.provkalteng.id/'
+                code: ''
+                reference: ''
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: SIKS-NG
+                nesting: ''
+                type: url
+                url: 'https://siks.kemsos.go.id/'
+                code: ''
+                reference: ''
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '1'

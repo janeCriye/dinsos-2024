@@ -1,0 +1,28 @@
+url = "/form-permohonan-data"
+layout = "main-page"
+title = "Form Permohonan Data"
+is_hidden = 0
+meta_title = "Pengajuan Permohonan Kebutuhan Data/Informasi"
+meta_description = "Form pengajuan permohonan kebutuhan data/informasi kepada pejabat PPID"
+child_of = "mey_no_parent"
+hide_crumb = 0
+remove_crumb_trail = 0
+crumb_disabled = 0
+
+[userMinta]
+==
+<p class="mb-3 alert alert-info d-flex align-items-center p-3 shadow-sm border rounded" style="background-color: #e9f7fa; color: #055160;">
+    <i class="bi bi-info-circle-fill me-2"></i>
+    Silahkan lakukan pengisian form untuk permintaan atau permohonan data yang bersumber dari Dinas Sosial Provinsi Kalimantan Tengah.
+</p>
+
+<div class="alert alert-warning d-flex align-items-start p-3 shadow-sm border rounded" role="alert" style="background-color: #fff8e1; color: #795548;">
+    <i class="bi bi-exclamation-triangle-fill me-3" style="font-size: 1.5rem;"></i>
+    <div>
+        <span class="fw-bold">Perhatian:</span> Apabila dibutuhkan, kemungkinan ada proses validasi terhadap data yang Anda inputkan!
+    </div>
+</div>
+
+<div class="form-container">
+    {% component 'userMinta' %}
+</div>

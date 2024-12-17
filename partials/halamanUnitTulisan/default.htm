@@ -1,0 +1,129 @@
+{% set dataHalamanUnit = __SELF__.dataHalamanUnit %}
+<div class="tab-style1">
+    <ul class="nav nav-tabs" id="infoTambahan" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="tab-berita" data-toggle="tab"
+                href="#berita" role="tab" aria-controls="berita" aria-selected="true">
+                Publikasi {{ dataHalamanUnit['data'].nama }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="tab-info" data-toggle="tab" href="#info" role="tab" aria-controls="info"
+                aria-selected="true">
+                Tentang {{ dataHalamanUnit['data'].nama }}
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content" id="infoTambahanContent">
+        <div class="tab-pane fade show active" id="berita" role="tabpanel" aria-labelledby="home-tab">
+
+<div class="row g-0 mt-3"> 
+    <!-- start features box item -->
+    <div class="col-12" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+        <ul class="blog-grid blog-wrapper grid-loading grid grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+            <li class="grid-sizer"></li>
+
+                {# {% for post in dataHalamanUnit['tulisan'] %} #}
+                {# <li>
+                    <div class="post_footer">
+                        <div class="post_img">
+                            <a href="#">
+                                <img src="{{ post.gambar_header | resize(80,80,{mode:'crop'}) }}" alt="{{ post.judul }}">
+                            </a>
+                        </div>
+                        <div class="post_content">
+                            <h4><a href="/kabar/baca/{{ post.slug }}">{{ post.judul }}</a></h4>
+                            <p class="small m-0"><i class="fa fa-calendar"></i> {{ post.tgl_tampil | date("d-m-Y") }}</p>
+                            <p>{{ post.ringkasan_paksa }}
+                            <strong><a href="/kabar/baca/{{ post.slug }}">Selanjutnya ...</a></strong>
+                            </p>
+                        </div>
+                    </div>
+                </li> #}
+
+                            {% for post in dataHalamanUnit['tulisan'] %}
+                {% set headerDef = 'https://via.placeholder.com/600x430' %}
+                {% set header = post.gambar_header.path | default(headerDef) %}
+            <li class="grid-item">
+                <div class="card border-0 border-radius-5px box-shadow-quadruple-large box-shadow-quadruple-large-hover">
+                    <div class="blog-image" style="height: 250px; overflow: hidden;">
+                        <a href="/kabar/baca/{{ post.slug }}" class="d-block">
+                            <img src="{{ header | resize(600,600, { mode:'crop' }) }}" alt="{{ post.judul }}" />
+                        </a>
+                    </div>
+                    <div class="card-body p-13 md-p-11">
+                        <a href="/kabar/baca/{{ post.slug }}" class="text-uppercase card-title mb-15px fw-600 fs-18 lh-28 text-dark-gray d-inline-block w-90 md-w-100">
+                            {{ post.judul | slice(0, 20) }}{% if post.judul|length > 20 %}...{% endif %}
+                        </a>
+                        <p>
+                            {% if post.ringkasan %}
+                                {{ post.ringkasan | slice(0, 20) }}{% if post.ringkasan|length > 20 %}...{% endif %}
+                            {% else %}
+                                Tidak ada ringkasan
+                            {% endif %}
+                        </p>
+                        <div class="author d-flex justify-content-center align-items-center position-relative overflow-hidden fs-14 text-uppercase">
+                            <div class="me-auto">
+                                <span class="blog-date d-inline-block fw-600 text-dark-gray"><i class="bi bi-calendar"></i> {{ post.tgl_tampil | date('d F Y') }}</span>
+                                <div class="d-inline-block author-name fw-600 text-dark-gray">
+                                    <span class="text-dark-gray"><i class="bi bi-calendar2-check"></i> {{ post.updated_at | date('d F Y') }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+                {% else %}
+                                <li class="grid-item">
+                <div class="alert alert-info" style="height: 300px; display: flex; justify-content: center; align-items: center;">{{ dataHalamanUnit['data'].nama }}</strong> belum melakukan publikasi terhadap data / informasi / kegiatan / artikel / berita  miliknya.</div>
+            </li>
+                {% endfor %}
+
+                        </ul>
+    </div>
+    <div class="col-12 mt-5 mb-5 d-flex justify-content-center" data-anime='{ "el": "childs", "translateY": [0, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+        {% partial '_pagination' records=posts %}
+    </div> 
+</div>
+
+            {% if dataHalamanUnit['tulisan'].lastPage > 1 %}
+                {#  
+                ini adalah untuk melakukan load halaman 
+                #}
+                {% set paramHalaman = dataHalamanUnit['paramHalaman'] %}
+                <ul class="pagination">
+                    {% if dataHalamanUnit['tulisan'].currentPage > 1 %}
+                    <li class="page-item"><a class="page-link"
+                        href="{{ this.page.baseFileName|page({ (paramHalaman): (dataHalamanUnit['tulisan'].currentPage-1) }) }}">
+                        <i class="ion-ios-arrow-thin-left"></i>
+                    </a></li>
+                    {% endif %}
+                    {% for page in 1..dataHalamanUnit['tulisan'].lastPage %}
+                    <li class="page-item {{ dataHalamanUnit['tulisan'].currentPage == page ? 'active' : null }}">
+                        <a class="page-link" 
+                        href="{{ this.page.baseFileName|page({(paramHalaman): page }) }}">{{ page }}</a>
+                    </li>
+                    {% endfor %}
+
+                    {% if dataHalamanUnit['tulisan'].lastPage > dataHalamanUnit['tulisan'].currentPage %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ this.page.baseFileName|page({(paramHalaman): (dataHalamanUnit['tulisan'].currentPage+1) }) }}">
+                                <i class="ion-ios-arrow-thin-right"></i></a></li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="home-tab">
+            {% if dataHalamanUnit['data'].keterangan| trim | length > 0 %}
+                {{ html_clean(dataHalamanUnit['data'].keterangan)|raw }}
+            {% else %}
+                <div class="alert alert_style1 alert-warning" role="alert">
+                    <i class="ion-information-circled"></i>
+                    Sepertinya unit ini masih malu-malu menampilkan keterangan tentang dirinya. 
+                    Tidak ada data tercatat tentang profil singkat milik <strong>{{ dataHalamanUnit['data'].nama }}</strong>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
