@@ -79,6 +79,19 @@ items:
                     isHidden: '0'
                     cssClass: ''
                     isExternal: '0'
+            -
+                title: Dokumen
+                nesting: null
+                type: url
+                url: /dokumen
+                code: ''
+                reference: null
+                cmsPage: null
+                replace: null
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
     -
         title: 'Kabar Unit'
         nesting: ''
@@ -302,15 +315,6 @@ items:
                     isHidden: '0'
                     cssClass: ''
                     isExternal: '0'
-    -
-        title: Dokumen
-        type: url
-        url: /dokumen
-        code: ''
-        viewBag:
-            isHidden: '0'
-            cssClass: ''
-            isExternal: '0'
     -
         title: Tentang
         nesting: ''

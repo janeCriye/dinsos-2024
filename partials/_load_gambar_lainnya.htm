@@ -29,29 +29,66 @@ sebagai contoh saat memanggil partial 'site/_load_gambar_lainnya' gambar_lainnya
 {% endif %} #}
 
 {% if gambar_lainnya.count > 1 %}
-        <section style="background-image: url(images/portfolio-single-gallery-07.jpg)">
-        <
-            <div class="container">
-                <div class="row">
+    <div class="container-fluid"> 
+        <div class="row">
+            <div class="col">
+                <ul class="image-gallery-style-02 gallery-wrapper grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-large" style="position: relative; height: 587.406px;">
+                    <li class="grid-sizer"></li>
+
+                    {% for image in gambar_lainnya %}
+                        <!-- start gallery item -->
+                        <li class="grid-item transition-inner-all atropos atropos-rotate-touch" data-atropos="" data-atropos-perspective="1150" style="position: absolute; left: 0%; top: 0px;">
+                            <div class="atropos-scale" style="transform: translate3d(0px, 0px, 0px); transition-duration: 300ms;">
+                                <div class="atropos-rotate" style="transition-duration: 300ms; transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg);">
+                                    <div class="atropos-inner" data-atropos-offset="3" style="transition-duration: 300ms; transform: translate3d(0px, 0px, 0px);"> 
+                                        <div class="gallery-box">
+                                            <a href="{{ image.path }}" data-group="lightbox-group-gallery-item-2" title="{{ image.description }}">
+                                                <div class="position-relative gallery-image bg-slate-blue">
+                                                    <img src="{{ image.getThumb(295, 274, 'fit') }}" alt="" data-no-retina="">
+                                                    <div class="d-flex align-items-center justify-content-center position-absolute top-0px left-0px w-100 h-100 gallery-hover move-bottom-top">
+                                                        <i class="bi bi-camera icon-medium text-white"></i>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    <span class="atropos-highlight" style="transform: translate3d(0px, 0px, 0px); transition-duration: 300ms; opacity: 0;"></span></div>
+                                <span class="atropos-shadow" style="transform: translate3d(0px, 0px, -50px) scale(1); transition-duration: 300ms;"></span></div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {# <section style="background-image: url(images/portfolio-single-gallery-07.jpg)">
+        <div class="container">
+            <div class="row">
                 <div class="col-12"><h6 class="alt-font fw-500 text-dark-gray mb-20px">Gambar terkait</h6></div>
-                    <div class="col-12 overlap-section">
-                        <div class="overlap-section-inner box-shadow-large border-10 border-solid border-color-white"> 
-                            <div class="swiper magic-cursor light" data-slider-options='{ "slidesPerView": 1, "spaceBetween": 0, "effect": "fade", "speed": 1200, "loop": true, "autoplay": { "delay": 1500, "disableOnInteraction": false },  "pagination": { "el": ".slider-three-slide-pagination", "clickable": true, "dynamicBullets": true }, "navigation": { "nextEl": ".slider-one-slide-next-1", "prevEl": ".slider-one-slide-prev-1" }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "992": { "slidesPerView": 1 }, "768": { "slidesPerView": 1 }, "320": { "slidesPerView": 1 } } }'>
-                                <div class="swiper-wrapper">
-                                    <!-- start slider item --> 
-                                                {% for image in gambar_lainnya %}
-            {% if loop.index0 > 0 %}
-                                    <div class="swiper-slide">
-                                        <img src="{{ image.getThumb(360, 240, 'fit') }}" alt="{{ image.description }}" class="w-100" /> 
-                                    </div>
-                                                {% endif %}
-            {% endfor %}
-                                    <!-- end slider item --> 
-                                </div> 
+                <div class="col-12 overlap-section">
+                    <div class="overlap-section-inner box-shadow-large border-10 border-solid border-color-white">
+                        <div
+                            class="swiper magic-cursor light"
+                            data-slider-options='{ "slidesPerView": 1, "spaceBetween": 0, "effect": "fade", "speed": 1200, "loop": true, "autoplay": { "delay": 1500, "disableOnInteraction": false },  "pagination": { "el": ".slider-three-slide-pagination", "clickable": true, "dynamicBullets": true }, "navigation": { "nextEl": ".slider-one-slide-next-1", "prevEl": ".slider-one-slide-prev-1" }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "992": { "slidesPerView": 1 }, "768": { "slidesPerView": 1 }, "320": { "slidesPerView": 1 } } }'
+                        >
+                            <div class="swiper-wrapper">
+                                <!-- start slider item -->
+                                {% for image in gambar_lainnya %}
+                                    {% if loop.index0 > 0 %}
+                                        <div class="swiper-slide">
+                                            <img
+                                                src="{{ image.getThumb(360, 240, 'fit') }}"
+                                                alt="{{ image.description }}"
+                                                class="w-100"
+                                            />
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                                <!-- end slider item -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section> #}
 {% endif %}
